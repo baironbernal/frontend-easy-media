@@ -1,0 +1,21 @@
+.navbar {
+    padding: 0px 13px;
+    display: block;
+    background-color: white;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__logo {
+        display: flex;
+        align-items: center;
+        span {
+            display: block;
+            font-weight: 700;
+            font-size: 15px;
+        }
+    }
+    &__menu {
+        display: none;
+    }
+}

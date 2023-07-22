@@ -1,0 +1,30 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <p>Nombre:
+        <input type="text" formControlName="nombre" required>
+        <span *ngIf="this.registerForm.get('nombre')?.errors?.['required']">
+          (El nombre no puede quedar vacío)
+        </span>
+        <span *ngIf="this.registerForm.get('nombre')?.errors?.['minlength']">
+          (Debe tener como mínimo 10 caracteres)
+        </span>
+    </p>
+    <p>email:
+        <input type="text" formControlName="email">
+        <span *ngIf="this.registerForm.get('email')?.errors?.['required']">
+        (El email no puede quedar vacío)
+      </span>
+        <span *ngIf="this.registerForm.get('email')?.errors?.['eemail']">
+        (El email no es válido)
+      </span>
+    </p>
+    <p>password<br>
+        <textarea rows="10" cols="70" formControlName="password"></textarea>
+    </p>
+    <div *ngIf="this.registerForm.get('password')?.errors?.['required']">
+        (El password no puede quedar vacío)
+    </div>
+    <div *ngIf="this.registerForm.get('password')?.errors?.['maxlength']">
+        (Debe tener como máximo 500 caracteres)
+    </div>
+    <button type="submit">Confirmar</button>
+</form>
