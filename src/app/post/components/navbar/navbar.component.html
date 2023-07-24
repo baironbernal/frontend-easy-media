@@ -4,14 +4,17 @@
         <span class="navbar__easy-name">Easy Media</span>
     </div>
 
-    <div class="navbar__icon-align">
-        <img src="/assets/icons/align-justify.svg" alt="icon menu" height="30" width="40">
+    <div class="navbar__icon-align" (click)="slide()">
+        <img *ngIf="!navbarList; else slidded" src="/assets/icons/align-justify.svg" alt="icon menu" height="30" width="40">
+
+        <ng-template #slidded>
+            <img src="/assets/icons/x.svg" alt="x menu" height="30" width="40">
+        </ng-template>
+    </div>
+</div>
+
+<div class="navbarList" *ngIf="navbarList">
+    <div class="navbarList__title">
 
     </div>
-
-    <div class="navbar__menu">
-
-    </div>
-
-
 </div>

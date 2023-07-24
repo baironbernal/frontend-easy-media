@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./create.component.scss', '../../styles/styles-post-shared.scss']
 })
 export class CreateComponent {
-  title: string = 'Create message';
+  h1: string = 'Create message';
+  title: string = '';
+  message: string = '';
+  
+
+  
 }

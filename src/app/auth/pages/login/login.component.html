@@ -1,21 +1,21 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="loginForm" (ngSubmit)="login()">
 
     <p>email:
         <input type="text" formControlName="email">
-        <span *ngIf="this.loginForm.get('email')?.errors?.['required']">
+        <span *ngIf="formSubmitted && this.loginForm.get('email')?.errors?.['required']">
         (El email no puede quedar vacío)
       </span>
-        <span *ngIf="this.loginForm.get('email')?.errors?.['eemail']">
+        <span *ngIf="formSubmitted && this.loginForm.get('email')?.errors?.['eemail']">
         (El email no es válido)
       </span>
     </p>
     <p>password<br>
-        <textarea rows="10" cols="70" formControlName="password"></textarea>
+        <input type="password" formControlName="password">
     </p>
-    <div *ngIf="this.loginForm.get('password')?.errors?.['required']">
+    <div *ngIf="formSubmitted && this.loginForm.get('password')?.errors?.['required']">
         (El password no puede quedar vacío)
     </div>
-    <div *ngIf="this.loginForm.get('password')?.errors?.['maxlength']">
+    <div *ngIf="formSubmitted && this.loginForm.get('password')?.errors?.['maxlength']">
         (Debe tener como máximo 500 caracteres)
     </div>
     <button type="submit">Confirmar</button>

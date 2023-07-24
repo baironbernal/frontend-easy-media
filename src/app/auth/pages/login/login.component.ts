@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import Swal  from 'sweetalert2';
 
 
 @Component({
@@ -9,16 +12,35 @@ import { Validators, FormBuilder } from '@angular/forms';
 })
 export class LoginComponent {
   
-  constructor(private fb: FormBuilder) { }
+  constructor(private authService: AuthService, 
+    private router: Router, private fb: FormBuilder) { }
+
+  public formSubmitted = false;
 
   loginForm = this.fb.group({
-    password: ['', [Validators.required, Validators.minLength(10)]],
     email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required,]], 
+  }, {
+    validators: () => {}
   });
 
 
-onSubmit() {
-  console.log(this.loginForm.value);
-}
+  login() {
+    this.formSubmitted = true;
+    if (this.loginForm.invalid) {
+      return;
+    }
+  
+  
+    this.authService.login(this.loginForm.value).subscribe((data) => {
+      console.log(data);
+      this.router.navigateByUrl('/post/my-publications')  
+    }, (err) => {
+
+      Swal.fire('Error', err.error.msg, 'error')
+    })    
+    
+    console.log(this.loginForm.value);
+  }
 
 }
