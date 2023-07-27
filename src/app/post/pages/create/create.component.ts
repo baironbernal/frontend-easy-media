@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Post } from '../../interfaces/post.interface';
 
 @Component({
   selector: 'app-create',
@@ -7,8 +8,13 @@ import { Component } from '@angular/core';
 })
 export class CreateComponent {
   h1: string = 'Create message';
-  title: string = '';
-  message: string = '';
+  post: Post = {
+    _id: '',
+    title: '',
+    message: '',
+    date_at: '',
+    
+  };
   
 
   
