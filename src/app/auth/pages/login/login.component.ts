@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import Swal  from 'sweetalert2';
@@ -8,7 +8,7 @@ import Swal  from 'sweetalert2';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['../../styles/auth-shared.scss']
 })
 export class LoginComponent {
   

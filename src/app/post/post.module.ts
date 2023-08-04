@@ -8,7 +8,8 @@ import { AllComponent } from './pages/all/all.component';
 import { CreateComponent } from './pages/create/create.component';
 import { MyPublicationsComponent } from './pages/my-publications/my-publications.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -18,12 +19,16 @@ import { FormsModule } from '@angular/forms';
     AllComponent,
     CreateComponent,
     MyPublicationsComponent,
-    NavbarComponent
+    NavbarComponent,
+    
+    
   ],
   imports: [
     CommonModule,
     PostRoutingModule,
-    FormsModule
+    FormsModule,
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class PostModule { }

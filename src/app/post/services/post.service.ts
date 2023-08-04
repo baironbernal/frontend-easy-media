@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
 import { Observable } from 'rxjs';
 import { PostResponse } from '../interfaces/post-response.interface';
+import { Post } from '../interfaces/post.interface';
 
 
 @Injectable({
@@ -28,6 +29,17 @@ export class PostService {
       headers: {
         'x-token': this.token
       }
+    })
+  }
+
+
+  createPost(post: Post): Observable<PostResponse> {
+    
+    return this.http.post<PostResponse>(environment.base_url + '/posts/', post,{
+      headers: {
+        'x-token': this.token
+      },
+      
     })
   }
 }

@@ -1,33 +1,50 @@
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <p>Nombre:
-        <input type="text" formControlName="name" required>
-        <span *ngIf="formSubmitted && this.registerForm.get('name')?.errors?.['required']">
-          (El name no puede quedar vacío)
-        </span>
-        <span *ngIf="formSubmitted && this.registerForm.get('name')?.errors?.['minlength']">
-          (Debe tener como mínimo 10 caracteres)
-        </span>
-    </p>
-    <p>email:
-        <input type="text" formControlName="email">
-        <span *ngIf="formSubmitted && this.registerForm.get('email')?.errors?.['required']">
-        (El email no puede quedar vacío)
-      </span>
-        <span *ngIf="formSubmitted && this.registerForm.get('email')?.errors?.['eemail']">
-        (El email no es válido)
-      </span>
-    </p>
-    <p>Contraseña<br>
-        <input type="password" formControlName="password" />
-    </p>
-    <p>Confirmar contraseña<br>
-        <input type="confirm_password" formControlName="confirm_password" />
-    </p>
-    <div *ngIf="formSubmitted && this.registerForm.get('password') ?.errors?.['required']">
-        (El password no puede quedar vacío)
+<div class="login-container">
+    <img src="assets/login/portrait.png" alt="" class="loginForm__portrait">
+    <div class="login-container__titles">
+        <h1>Easy Media</h1>
+        <h3>Now share is easy</h3>
+        <h2>Sign Up</h2>
     </div>
-    <div *ngIf="formSubmitted && this.registerForm.get('password')?.errors?.['maxlength']">
-        (Debe tener como máximo 500 caracteres)
-    </div>
-    <button type="submit">Confirmar</button>
-</form>
+    <form class="login-container__form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+        <div>
+            <p>Full Name</p>
+            <input type="text" formControlName="name" required>
+            <span *ngIf="formSubmitted && this.registerForm.get('name')?.errors?.['required']">
+        (El name no puede quedar vacío)
+      </span>
+            <span *ngIf="formSubmitted && this.registerForm.get('name')?.errors?.['minlength']">
+        (Debe tener como mínimo 10 caracteres)
+      </span>
+        </div>
+        <div>
+            <p>Email</p>
+            <input type="text" formControlName="email">
+            <span *ngIf="formSubmitted && this.registerForm.get('email')?.errors?.['required']">
+            (El email no puede quedar vacío)
+          </span>
+            <span *ngIf="formSubmitted && this.registerForm.get('email')?.errors?.['eemail']">
+            (El email no es válido)
+          </span>
+        </div>
+        <div>
+            <p>Password</p>
+            <input type="password" formControlName="password" />
+            <span *ngIf="formSubmitted && this.registerForm.get('password') ?.errors?.['required']">
+          (El password no puede quedar vacío)
+        </span>
+        </div>
+        <div>
+            <p>Confirmar contraseña</p>
+            <input type="confirm_password" formControlName="confirm_password" />
+            <span *ngIf="formSubmitted && this.registerForm.get('password') ?.errors?.['required']">
+          (El password no puede quedar vacío)
+        </span>
+            <span *ngIf="formSubmitted && this.registerForm.get('password')?.errors?.['maxlength']">
+          (Debe tener como máximo 500 caracteres)
+      </span>
+        </div>
+
+        <shared-button [name]="'SIGN UP'"></shared-button>
+    </form>
+</div>

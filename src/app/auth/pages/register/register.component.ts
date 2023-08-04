@@ -7,7 +7,7 @@ import Swal  from 'sweetalert2';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['../../styles/auth-shared.scss']
 })
 export class RegisterComponent {
   constructor(private fb: FormBuilder, private authService: AuthService) { }
