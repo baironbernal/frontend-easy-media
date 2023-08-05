@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import Swal  from 'sweetalert2';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -11,8 +12,10 @@ import Swal  from 'sweetalert2';
 })
 export class RegisterComponent {
   constructor(private fb: FormBuilder, private authService: AuthService) { }
-
+  
+  suscription: Subscription= new Subscription;
   public formSubmitted = false;
+  
 
   registerForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(5)]],
@@ -29,7 +32,7 @@ export class RegisterComponent {
     if (this.registerForm.invalid) {
       return;
     }
-    this.authService.createUser(this.registerForm.value)
+    this.suscription = this.authService.createUser(this.registerForm.value)
       .subscribe((data) => {
         console.log(data)
       }, (err) => {
@@ -49,5 +52,9 @@ export class RegisterComponent {
         pass1Control?.setErrors({isNotEqual: true})
       }
     }
+  }
+
+  ngOnDestroy(){
+    this.suscription.unsubscribe();
   }
 }

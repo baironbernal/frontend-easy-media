@@ -25,10 +25,10 @@ export class MyPublicationsComponent {
   }
 
    getMyPublications() {
+      const userSession = JSON.parse(localStorage.getItem('user')!);
       
-      this.suscription = this.postService.getMyPosts('1232131').subscribe(data => this.postsResponse = data);
+      this.suscription = this.postService.getMyPosts(userSession._id).subscribe(data => this.postsResponse = data);
    }
-
 
    ngOnDestroy() {
     this.suscription.unsubscribe();

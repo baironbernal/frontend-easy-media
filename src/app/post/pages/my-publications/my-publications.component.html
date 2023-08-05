@@ -6,6 +6,8 @@
         <label for="date">Date select</label>
         <input type="date" placeholder="Your post title">
     </div>
-    <app-card></app-card>
-    <app-card></app-card>
+
+    <app-card *ngFor="let post of postsResponse.posts" [post]="post"></app-card>
+
+
 </div>

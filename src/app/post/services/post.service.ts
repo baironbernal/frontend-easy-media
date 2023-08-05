@@ -13,33 +13,18 @@ export class PostService {
 
   constructor(private http: HttpClient) { }
 
-  token: string = localStorage.getItem('token') || '';
-
   getPost(): Observable<PostResponse> {
-    return this.http.get<PostResponse>(environment.base_url + '/posts', {
-      headers: {
-        'x-token': this.token
-      }
-    })
+    return this.http.get<PostResponse>(environment.base_url + '/posts');
   }
 
   getMyPosts(userId: string): Observable<PostResponse> {
     
-    return this.http.get<PostResponse>(environment.base_url + '/posts/' + userId, {
-      headers: {
-        'x-token': this.token
-      }
-    })
+    return this.http.get<PostResponse>(environment.base_url + '/posts/' + userId);
   }
 
 
   createPost(post: Post): Observable<PostResponse> {
     
-    return this.http.post<PostResponse>(environment.base_url + '/posts/', post,{
-      headers: {
-        'x-token': this.token
-      },
-      
-    })
+    return this.http.post<PostResponse>(environment.base_url + '/posts/', post);
   }
 }

@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { PostInterceptorService } from './interceptors/post-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -17,9 +19,17 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     AuthModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
+    
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: PostInterceptorService,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

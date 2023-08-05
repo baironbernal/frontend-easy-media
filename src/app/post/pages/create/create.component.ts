@@ -6,6 +6,7 @@ import { Validators, FormBuilder } from '@angular/forms';
 import Swal  from 'sweetalert2';
 import { Router } from '@angular/router';
 import { PostService } from '../../services/post.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-create',
@@ -16,6 +17,7 @@ export class CreateComponent {
   constructor(private postService: PostService, 
     private router: Router, private fb: FormBuilder) { }
 
+  suscription:Subscription = new Subscription;
   public formSubmitted = false;
 
   h1: string = 'Create message';
@@ -47,8 +49,7 @@ export class CreateComponent {
       return;
     }
   
-  
-    this.postService.createPost(this.createPostForm.value).subscribe((data) => {
+    this.suscription = this.postService.createPost(this.createPostForm.value).subscribe((data) => {
       console.log(data);
       this.router.navigateByUrl('/post/my-publications')  
     }, (err) => {
@@ -59,7 +60,9 @@ export class CreateComponent {
     Swal.fire('Post created', 'Great Job', 'success')
   }
 
-  
+  ngOnDestroy(){
+    this.suscription.unsubscribe();
+  }
   
 
   

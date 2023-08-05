@@ -12,6 +12,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 
 
+
+
+
 @NgModule({
   declarations: [
     DateSelectorComponent,
@@ -20,15 +23,15 @@ import { SharedModule } from '../shared/shared.module';
     CreateComponent,
     MyPublicationsComponent,
     NavbarComponent,
-    
-    
   ],
   imports: [
     CommonModule,
     PostRoutingModule,
     FormsModule,
     SharedModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    
+  ],
+  
 })
 export class PostModule { }
